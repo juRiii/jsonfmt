@@ -22,6 +22,9 @@ func main() {
 		return
 	}
 
-	log.SetOutput(os.Stdout)
-	log.Print(output.String())
+	_, err = os.Stdout.Write(output.Bytes())
+	if err != nil {
+		log.Println(err)
+		return
+	}
 }
